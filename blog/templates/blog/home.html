@@ -49,46 +49,78 @@
         <!-- Latest Posts -->
         <section class="posts-section">
 
-            <!-- Search -->
-<div class="search-box">
+            <!-- Search and Filters -->
+            <div class="search-box">
 
-    <form method="get" action="{% url 'home' %}">
+                <form method="get" action="{% url 'home' %}">
 
-        <input
-            type="text"
-            name="q"
-            value="{{ search_query }}"
-            placeholder="Search projects, authors, categories..."
-        >
+                    <input
+                        type="text"
+                        name="q"
+                        value="{{ search_query }}"
+                        placeholder="Search projects, authors, categories..."
+                    >
 
-        <select name="category">
+                    <select name="category">
 
-            <option value="">
-                All Categories
-            </option>
+                        <option value="">
+                            All Categories
+                        </option>
 
-            {% for category in categories %}
+                        {% for category in categories %}
 
-                <option
-                    value="{{ category }}"
-                    {% if selected_category == category %}
-                        selected
-                    {% endif %}
-                >
-                    {{ category }}
-                </option>
+                            <option
+                                value="{{ category }}"
+                                {% if selected_category == category %}
+                                    selected
+                                {% endif %}
+                            >
+                                {{ category }}
+                            </option>
 
-            {% endfor %}
+                        {% endfor %}
 
-        </select>
+                    </select>
 
-        <button type="submit">
-            Search
-        </button>
+                    <select name="sort">
 
-    </form>
+                        <option
+                            value="newest"
+                            {% if selected_sort == "newest" %}
+                                selected
+                            {% endif %}
+                        >
+                            Newest
+                        </option>
 
-</div>
+                        <option
+                            value="oldest"
+                            {% if selected_sort == "oldest" %}
+                                selected
+                            {% endif %}
+                        >
+                            Oldest
+                        </option>
+
+                        <option
+                            value="title"
+                            {% if selected_sort == "title" %}
+                                selected
+                            {% endif %}
+                        >
+                            Title A-Z
+                        </option>
+
+                    </select>
+
+                    <button type="submit">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
 
             <!-- Section Header -->
             <div class="section-header">
@@ -137,14 +169,15 @@
                                     {{ post.category }}
                                 </span>
 
-                         <h3>
-                           <a
-                            href="{% url 'post_detail' post.id %}"
-                            class="post-title-link"
-                           >
-                             {{ post.title }}
-                           </a>
-                         </h3>
+                                <h3>
+                                    <a
+                                        href="{% url 'post_detail' post.id %}"
+                                        class="post-title-link"
+                                    >
+                                        {{ post.title }}
+                                    </a>
+                                </h3>
+
                                 <p class="post-author">
                                     By {{ post.author }}
                                 </p>

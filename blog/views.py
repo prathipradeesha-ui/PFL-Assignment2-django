@@ -6,8 +6,17 @@ from .forms import PostForm
 def home(request):
     search_query = request.GET.get('q', '').strip()
     selected_category = request.GET.get('category', '').strip()
+    selected_sort = request.GET.get('sort', 'newest').strip()
 
-    posts = Post.objects.order_by('-created_at')
+    if selected_sort == 'oldest':
+        sort_order = 'created_at'
+    elif selected_sort == 'title':
+        sort_order = 'title'
+    else:
+        sort_order = '-created_at'
+        selected_sort = 'newest'
+
+    posts = Post.objects.order_by(sort_order)
 
     if search_query:
         posts = posts.filter(
@@ -42,6 +51,7 @@ def home(request):
             "search_query": search_query,
             "selected_category": selected_category,
             "categories": categories,
+            "selected_sort": selected_sort,
         }
     )
 
