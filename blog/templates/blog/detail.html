@@ -60,14 +60,30 @@
                 {{ post.content|linebreaks }}
 
             </div>
+                <div class="detail-actions">
 
-            <a
-                class="back-link"
-                href="{% url 'home' %}"
-            >
-                ← Back to Home
-            </a>
+    <a
+        class="edit-button"
+        href="{% url 'edit_post' post.id %}"
+    >
+        Edit Post
+    </a>
 
+    <a
+        class="delete-button"
+        href="{% url 'delete_post' post.id %}"
+    >
+        Delete Post
+    </a>
+
+    <a
+        class="back-link"
+        href="{% url 'home' %}"
+    >
+        ← Back to Home
+    </a>
+
+</div>
         </article>
 
     </main>
