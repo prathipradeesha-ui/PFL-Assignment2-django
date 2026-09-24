@@ -19,6 +19,18 @@ def home(request):
             content__icontains=search_query
         )
 
+    if selected_category:
+        posts = posts.filter(
+            category=selected_category
+        )
+
+    categories = (
+        Post.objects
+        .values_list('category', flat=True)
+        .distinct()
+        .order_by('category')
+    )
+
     posts = posts[:3]
 
     return render(
@@ -27,6 +39,8 @@ def home(request):
         {
             "posts": posts,
             "search_query": search_query,
+            "selected_category": selected_category,
+            "categories": categories,
         }
     )
 
