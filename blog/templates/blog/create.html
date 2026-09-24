@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Post - ProjectHub</title>
+
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <h1>ProjectHub</h1>
+            <a href="{% url 'home' %}">Home</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <div class="card">
+
+            <h2>Create a New Post</h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">Title</label>
+                    {{ form.title }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.author.id_for_label }}">Author</label>
+                    {{ form.author }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.category.id_for_label }}">Category</label>
+                    {{ form.category }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.content.id_for_label }}">Content</label>
+                    {{ form.content }}
+                </div>
+
+                <button type="submit">Create Post</button>
+            </form>
+
+            <a class="back-link" href="{% url 'home' %}">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

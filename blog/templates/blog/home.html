@@ -1,0 +1,203 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ProjectHub</title>
+
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+
+            <a class="brand" href="{% url 'home' %}">
+                <span class="brand-icon">🚀</span>
+                <span>ProjectHub</span>
+            </a>
+
+            <a class="nav-create" href="{% url 'create_post' %}">
+                + Create Post
+            </a>
+
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+
+            <h2>ProjectHub Blog</h2>
+
+            <p>
+                Explore final-year projects, ideas, and experiences
+                shared by students.
+            </p>
+
+        </section>
+
+
+        <!-- Latest Posts -->
+        <section class="posts-section">
+
+            <!-- Search -->
+            <div class="search-box">
+
+                <form method="get" action="{% url 'home' %}">
+
+                    <input
+                        type="text"
+                        name="q"
+                        value="{{ search_query }}"
+                        placeholder="Search projects, authors, categories..."
+                    >
+
+                    <button type="submit">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- Section Header -->
+            <div class="section-header">
+
+                <div>
+
+                    {% if search_query %}
+
+                        <h2>Search Results</h2>
+
+                        <p>
+                            Results for "{{ search_query }}"
+                        </p>
+
+                    {% else %}
+
+                        <h2>Latest Posts</h2>
+
+                        <p>
+                            Discover the latest student projects.
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+                <span>
+                    Latest 3 projects
+                </span>
+
+            </div>
+
+
+            <!-- Posts -->
+            {% if posts %}
+
+                <div class="posts-grid">
+
+                    {% for post in posts %}
+
+                        <article class="post-card">
+
+                            <div class="post-card-content">
+
+                                <span class="category">
+                                    {{ post.category }}
+                                </span>
+
+                         <h3>
+                           <a
+                            href="{% url 'post_detail' post.id %}"
+                            class="post-title-link"
+                           >
+                             {{ post.title }}
+                           </a>
+                         </h3>
+                                <p class="post-author">
+                                    By {{ post.author }}
+                                </p>
+
+                                <p class="post-content">
+                                    {{ post.content }}
+                                </p>
+
+                                <p class="post-date">
+                                    {{ post.created_at|date:"M d, Y H:i" }}
+                                </p>
+
+                            </div>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <!-- No Results -->
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        🔍
+                    </div>
+
+                    {% if search_query %}
+
+                        <h3>
+                            No posts found
+                        </h3>
+
+                        <p>
+                            No projects matched
+                            "{{ search_query }}".
+                        </p>
+
+                        <a
+                            class="empty-button"
+                            href="{% url 'home' %}"
+                        >
+                            View All Posts
+                        </a>
+
+                    {% else %}
+
+                        <h3>
+                            No blog posts yet
+                        </h3>
+
+                        <p>
+                            Be the first student to share a project.
+                        </p>
+
+                        <a
+                            class="empty-button"
+                            href="{% url 'create_post' %}"
+                        >
+                            Create First Post
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+    </main>
+
+</body>
+</html>

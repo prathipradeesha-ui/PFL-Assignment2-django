@@ -1,0 +1,880 @@
+/* =========================================
+   ProjectHub - Global Styles
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+
+/* =========================================
+   Navigation
+   ========================================= */
+
+.navbar {
+    width: 100%;
+
+    background: #0f172a;
+
+    padding: 15px 0;
+
+    box-shadow:
+        0 4px 12px rgba(15, 23, 42, 0.15);
+}
+
+.navbar-inner {
+    width: 92%;
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* ProjectHub logo */
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: white !important;
+
+    text-decoration: none;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    font-size: 21px;
+
+    box-shadow:
+        0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+
+/* Navbar Create Post */
+
+.nav-create {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 17px;
+
+    border-radius: 9px;
+
+    background: #4f46e5;
+
+    color: white !important;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+.nav-create:hover {
+    background: #4338ca;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   Main Container
+   ========================================= */
+
+.container {
+    width: 92%;
+    max-width: 1150px;
+
+    margin: 45px auto 70px;
+}
+
+
+/* =========================================
+   Hero Section
+   ========================================= */
+
+.hero {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 65px 55px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5 0%,
+            #6366f1 45%,
+            #7c3aed 100%
+        );
+
+    color: white;
+
+    box-shadow:
+        0 15px 35px rgba(79, 70, 229, 0.22);
+
+    margin-bottom: 48px;
+}
+
+
+/* Decorative circle */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -80px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+.hero h2 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 14px;
+
+    font-size: 42px;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+
+.hero p {
+    position: relative;
+    z-index: 1;
+
+    max-width: 680px;
+
+    margin: 0;
+
+    color: #eef2ff;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   Latest Posts Header
+   ========================================= */
+
+.posts-section {
+    margin-bottom: 50px;
+}
+
+.section-header {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.section-header h2 {
+    margin: 0;
+
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.section-header p {
+    margin: 7px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+.section-header > span {
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   Post Grid
+   ========================================= */
+
+.posts-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+/* =========================================
+   Post Card
+   ========================================= */
+
+.post-card {
+    background: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 17px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 18px rgba(15, 23, 42, 0.06);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 14px 28px rgba(15, 23, 42, 0.10);
+}
+
+.post-card-content {
+    padding: 25px;
+}
+
+
+/* Category */
+
+.category {
+    display: inline-block;
+
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* Post title */
+
+.post-card h3 {
+    margin: 17px 0 8px;
+
+    color: #0f172a;
+
+    font-size: 21px;
+
+    line-height: 1.35;
+}
+
+
+/* Author */
+
+.post-author {
+    margin: 0 0 17px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+/* Content */
+
+.post-content {
+    margin: 0;
+
+    color: #475569;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 4;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* Date */
+
+.post-date {
+    margin: 20px 0 0;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #e2e8f0;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   Empty State
+   ========================================= */
+
+.empty-state {
+    padding: 55px 30px;
+
+    background: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 17px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 18px rgba(15, 23, 42, 0.05);
+}
+
+.empty-icon {
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+.empty-state h3 {
+    margin: 0 0 8px;
+
+    font-size: 22px;
+}
+
+.empty-state p {
+    margin: 0 0 25px;
+
+    color: #64748b;
+}
+
+.empty-button {
+    display: inline-block;
+
+    padding: 11px 19px;
+
+    border-radius: 9px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.empty-button:hover {
+    background: #4338ca;
+}
+
+
+/* =========================================
+   Create Post Page
+   ========================================= */
+
+.form-container {
+    width: 92%;
+    max-width: 800px;
+
+    margin: 50px auto 70px;
+}
+
+.form-card {
+    background: white;
+
+    padding: 42px;
+
+    border-radius: 18px;
+
+    border: 1px solid #e2e8f0;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.form-card h2 {
+    margin: 0 0 8px;
+
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.form-description {
+    margin: 0 0 30px;
+
+    color: #64748b;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #334155;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 9px;
+
+    background: white;
+
+    color: #0f172a;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.form-group input {
+    height: 49px;
+}
+
+.form-group textarea {
+    min-height: 190px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* Submit button */
+
+.submit-button {
+    width: 100%;
+
+    padding: 14px 20px;
+
+    margin-top: 5px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+.submit-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 8px 18px rgba(79, 70, 229, 0.25);
+}
+
+
+/* Back link */
+
+.back-link {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    color: #4f46e5;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   Responsive Design
+   ========================================= */
+
+@media (max-width: 850px) {
+
+    .posts-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero {
+        padding: 48px 35px;
+    }
+
+    .hero h2 {
+        font-size: 35px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar-inner {
+        width: 94%;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .brand-icon {
+        width: 36px;
+        height: 36px;
+
+        font-size: 18px;
+    }
+
+    .nav-create {
+        padding: 8px 12px;
+
+        font-size: 12px;
+    }
+
+    .container {
+        width: 94%;
+
+        margin-top: 30px;
+    }
+
+    .hero {
+        padding: 38px 25px;
+
+        border-radius: 17px;
+    }
+
+    .hero h2 {
+        font-size: 29px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+    .form-card {
+        padding: 27px 22px;
+    }
+
+    .form-card h2 {
+        font-size: 27px;
+    }
+}
+
+/* =========================================
+   Search
+   ========================================= */
+
+.search-box {
+    margin-bottom: 30px;
+}
+
+.search-box form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+
+    height: 48px;
+
+    padding: 0 16px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 10px;
+
+    background: white;
+
+    color: #0f172a;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.search-box input:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+.search-box button {
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background: #4338ca;
+}
+
+
+/* Mobile search */
+
+@media (max-width: 600px) {
+
+    .search-box form {
+        flex-direction: column;
+    }
+
+    .search-box input,
+    .search-box button {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   Post Detail Page
+   ========================================= */
+
+.detail-container {
+    width: 92%;
+    max-width: 850px;
+
+    margin: 50px auto 70px;
+}
+
+.detail-card {
+    background: white;
+
+    padding: 45px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.detail-card h1 {
+    margin: 20px 0 12px;
+
+    color: #0f172a;
+
+    font-size: 38px;
+
+    line-height: 1.25;
+}
+
+.detail-meta {
+    display: flex;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+.detail-content {
+    padding-top: 25px;
+
+    border-top: 1px solid #e2e8f0;
+
+    color: #334155;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+}
+
+.detail-content p {
+    margin: 0 0 18px;
+}
+
+
+/* Mobile detail page */
+
+@media (max-width: 600px) {
+
+    .detail-container {
+        width: 94%;
+
+        margin-top: 30px;
+    }
+
+    .detail-card {
+        padding: 28px 22px;
+    }
+
+    .detail-card h1 {
+        font-size: 29px;
+    }
+
+    .detail-meta {
+        flex-direction: column;
+
+        gap: 6px;
+    }
+
+    .detail-content {
+        font-size: 15px;
+    }
+}
+
+.post-title-link {
+    color: #0f172a;
+    text-decoration: none;
+}
+
+.post-title-link:hover {
+    color: #4f46e5;
+}

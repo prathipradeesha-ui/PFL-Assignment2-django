@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ post.title }} - ProjectHub</title>
+
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+
+            <a class="brand" href="{% url 'home' %}">
+                <span class="brand-icon">🚀</span>
+                <span>ProjectHub</span>
+            </a>
+
+            <a class="nav-create" href="{% url 'create_post' %}">
+                + Create Post
+            </a>
+
+        </div>
+    </nav>
+
+
+    <!-- Post Detail -->
+    <main class="detail-container">
+
+        <article class="detail-card">
+
+            <span class="category">
+                {{ post.category }}
+            </span>
+
+            <h1>
+                {{ post.title }}
+            </h1>
+
+            <div class="detail-meta">
+
+                <span>
+                    By {{ post.author }}
+                </span>
+
+                <span>
+                    {{ post.created_at|date:"M d, Y H:i" }}
+                </span>
+
+            </div>
+
+            <div class="detail-content">
+
+                {{ post.content|linebreaks }}
+
+            </div>
+
+            <a
+                class="back-link"
+                href="{% url 'home' %}"
+            >
+                ← Back to Home
+            </a>
+
+        </article>
+
+    </main>
+
+</body>
+</html>
