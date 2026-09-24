@@ -76,6 +76,29 @@ class BlogTests(TestCase):
             "Smart Campus Monitoring System"
         )
 
+    def test_category_filter_works(self):
+        response = self.client.get(
+            reverse("home"),
+            {
+                "category": "Internet of Things"
+            }
+        )
+
+        self.assertEqual(
+            response.status_code,
+            200
+        )
+
+        self.assertEqual(
+            len(response.context["posts"]),
+            1
+        )
+
+        self.assertEqual(
+            response.context["posts"][0].title,
+            "Smart Campus Monitoring System"
+        )
+
     def test_create_page_loads(self):
         response = self.client.get(
             reverse("create_post")
@@ -126,4 +149,95 @@ class BlogTests(TestCase):
         self.assertContains(
             response,
             "Smart Campus Monitoring System"
+        )
+
+    def test_edit_page_loads(self):
+        post = Post.objects.first()
+
+        response = self.client.get(
+            reverse(
+                "edit_post",
+                args=[post.id]
+            )
+        )
+
+        self.assertEqual(
+            response.status_code,
+            200
+        )
+
+        self.assertContains(
+            response,
+            "Smart Campus Monitoring System"
+        )
+
+    def test_edit_post(self):
+        post = Post.objects.first()
+
+        response = self.client.post(
+            reverse(
+                "edit_post",
+                args=[post.id]
+            ),
+            {
+                "title": "Updated Smart Campus System",
+                "author": "Praathi",
+                "category": "Internet of Things",
+                "content": "Updated project content."
+            }
+        )
+
+        self.assertEqual(
+            response.status_code,
+            302
+        )
+
+        post.refresh_from_db()
+
+        self.assertEqual(
+            post.title,
+            "Updated Smart Campus System"
+        )
+
+    def test_delete_page_loads(self):
+        post = Post.objects.first()
+
+        response = self.client.get(
+            reverse(
+                "delete_post",
+                args=[post.id]
+            )
+        )
+
+        self.assertEqual(
+            response.status_code,
+            200
+        )
+
+        self.assertContains(
+            response,
+            "Are you sure you want to delete this post?"
+        )
+
+    def test_delete_post(self):
+        post = Post.objects.first()
+
+        post_id = post.id
+
+        response = self.client.post(
+            reverse(
+                "delete_post",
+                args=[post_id]
+            )
+        )
+
+        self.assertEqual(
+            response.status_code,
+            302
+        )
+
+        self.assertFalse(
+            Post.objects.filter(
+                id=post_id
+            ).exists()
         )
