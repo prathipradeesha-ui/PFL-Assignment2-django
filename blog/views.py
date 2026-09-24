@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
 from .models import Post
 from .forms import PostForm
 
@@ -20,13 +21,10 @@ def home(request):
 
     if search_query:
         posts = posts.filter(
-            title__icontains=search_query
-        ) | posts.filter(
-            author__icontains=search_query
-        ) | posts.filter(
-            category__icontains=search_query
-        ) | posts.filter(
-            content__icontains=search_query
+            Q(title__icontains=search_query)
+            | Q(author__icontains=search_query)
+            | Q(category__icontains=search_query)
+            | Q(content__icontains=search_query)
         )
 
     if selected_category:
@@ -120,3 +118,4 @@ def delete_post(request, post_id):
             "post": post,
         }
     )
+
