@@ -163,6 +163,17 @@
 
                         <article class="post-card">
 
+                            {% if post.cover_image %}
+
+                                <img
+                                    src="{{ post.cover_image }}"
+                                    alt="{{ post.title }} cover image"
+                                    class="post-cover"
+                                >
+
+                            {% endif %}
+
+
                             <div class="post-card-content">
 
                                 <span class="category">

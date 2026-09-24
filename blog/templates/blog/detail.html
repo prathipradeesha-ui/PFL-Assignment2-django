@@ -3,45 +3,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>{{ post.title }} - ProjectHub</title>
 
-    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    <link
+        rel="stylesheet"
+        href="{% static 'blog/style.css' %}"
+    >
+
 </head>
 
 <body>
 
-    <!-- Navigation -->
     <nav class="navbar">
+
         <div class="navbar-inner">
 
-            <a class="brand" href="{% url 'home' %}">
+            <a
+                class="brand"
+                href="{% url 'home' %}"
+            >
                 <span class="brand-icon">🚀</span>
                 <span>ProjectHub</span>
             </a>
 
-            <a class="nav-create" href="{% url 'create_post' %}">
+            <a
+                class="nav-create"
+                href="{% url 'create_post' %}"
+            >
                 + Create Post
             </a>
 
         </div>
+
     </nav>
 
 
-    <!-- Post Detail -->
     <main class="detail-container">
 
         <article class="detail-card">
+
+            {% if post.cover_image %}
+
+                <img
+                    src="{{ post.cover_image }}"
+                    alt="{{ post.title }} cover image"
+                    class="detail-cover"
+                >
+
+            {% endif %}
+
 
             <span class="category">
                 {{ post.category }}
             </span>
 
+
             <h1>
                 {{ post.title }}
             </h1>
+
 
             <div class="detail-meta">
 
@@ -55,35 +83,39 @@
 
             </div>
 
+
             <div class="detail-content">
 
                 {{ post.content|linebreaks }}
 
             </div>
-                <div class="detail-actions">
 
-    <a
-        class="edit-button"
-        href="{% url 'edit_post' post.id %}"
-    >
-        Edit Post
-    </a>
 
-    <a
-        class="delete-button"
-        href="{% url 'delete_post' post.id %}"
-    >
-        Delete Post
-    </a>
+            <div class="detail-actions">
 
-    <a
-        class="back-link"
-        href="{% url 'home' %}"
-    >
-        ← Back to Home
-    </a>
+                <a
+                    class="edit-button"
+                    href="{% url 'edit_post' post.id %}"
+                >
+                    Edit Post
+                </a>
 
-</div>
+                <a
+                    class="delete-button"
+                    href="{% url 'delete_post' post.id %}"
+                >
+                    Delete Post
+                </a>
+
+                <a
+                    class="back-link"
+                    href="{% url 'home' %}"
+                >
+                    ← Back to Home
+                </a>
+
+            </div>
+
         </article>
 
     </main>

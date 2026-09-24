@@ -14,45 +14,125 @@
 <body>
 
     <nav class="navbar">
+
         <div class="navbar-inner">
-            <h1>ProjectHub</h1>
-            <a href="{% url 'home' %}">Home</a>
+
+            <a class="brand" href="{% url 'home' %}">
+                <span class="brand-icon">🚀</span>
+                <span>ProjectHub</span>
+            </a>
+
+            <a class="nav-create" href="{% url 'home' %}">
+                Home
+            </a>
+
         </div>
+
     </nav>
 
-    <main class="container">
 
-        <div class="card">
+    <main class="form-container">
+
+        <div class="form-card">
 
             <h2>Create a New Post</h2>
 
+            <p class="form-description">
+                Share your final-year project, ideas, and experience
+                with other Software Engineering students.
+            </p>
+
+
             <form method="post">
+
                 {% csrf_token %}
 
+
+                <!-- Title -->
+
                 <div class="form-group">
-                    <label for="{{ form.title.id_for_label }}">Title</label>
+
+                    <label for="{{ form.title.id_for_label }}">
+                        Title
+                    </label>
+
                     {{ form.title }}
+
                 </div>
 
+
+                <!-- Author -->
+
                 <div class="form-group">
-                    <label for="{{ form.author.id_for_label }}">Author</label>
+
+                    <label for="{{ form.author.id_for_label }}">
+                        Author
+                    </label>
+
                     {{ form.author }}
+
                 </div>
 
+
+                <!-- Category -->
+
                 <div class="form-group">
-                    <label for="{{ form.category.id_for_label }}">Category</label>
+
+                    <label for="{{ form.category.id_for_label }}">
+                        Category
+                    </label>
+
                     {{ form.category }}
+
                 </div>
+
+
+                <!-- Content -->
 
                 <div class="form-group">
-                    <label for="{{ form.content.id_for_label }}">Content</label>
+
+                    <label for="{{ form.content.id_for_label }}">
+                        Content
+                    </label>
+
                     {{ form.content }}
+
                 </div>
 
-                <button type="submit">Create Post</button>
+
+                <!-- Cover Image -->
+
+                <div class="form-group">
+
+                    <label for="{{ form.cover_image.id_for_label }}">
+                        Cover Image URL
+                    </label>
+
+                    {{ form.cover_image }}
+
+                    <small>
+                        Paste a direct image URL, for example an Unsplash image URL.
+                    </small>
+
+                </div>
+
+
+                <!-- Submit -->
+
+                <button
+                    type="submit"
+                    class="submit-button"
+                >
+                    Create Post
+                </button>
+
             </form>
 
-            <a class="back-link" href="{% url 'home' %}">
+
+            <a
+                class="back-link"
+                href="{% url 'home' %}"
+            >
                 ← Back to Home
             </a>
 
