@@ -91,3 +91,18 @@ def edit_post(request, post_id):
             "post": post,
         }
     )
+
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('home')
+
+    return render(
+        request,
+        "blog/delete.html",
+        {
+            "post": post,
+        }
+    )
