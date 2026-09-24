@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from .forms import PostForm
 
 
 def home(request):
     search_query = request.GET.get('q', '').strip()
+    selected_category = request.GET.get('category', '').strip()
 
     posts = Post.objects.order_by('-created_at')
 
@@ -61,14 +62,16 @@ def create_post(request):
         {"form": form}
     )
 
+
 def post_detail(request, post_id):
-    post = Post.objects.get(id=post_id)
+    post = get_object_or_404(Post, id=post_id)
 
     return render(
         request,
         "blog/detail.html",
         {"post": post}
     )
+
 
 def edit_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -91,6 +94,7 @@ def edit_post(request, post_id):
             "post": post,
         }
     )
+
 
 def delete_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
