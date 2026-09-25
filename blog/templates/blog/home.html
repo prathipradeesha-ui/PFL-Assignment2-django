@@ -22,9 +22,21 @@
                 <span>ProjectHub</span>
             </a>
 
-            <a class="nav-create" href="{% url 'create_post' %}">
-                + Create Post
-            </a>
+            <div class="nav-actions">
+
+                <button
+                    type="button"
+                    id="bookmark-view-button"
+                    class="bookmark-view-button"
+                >
+                    ★ Bookmarks (0)
+                </button>
+
+                <a class="nav-create" href="{% url 'create_post' %}">
+                    + Create Post
+                </a>
+
+            </div>
 
         </div>
     </nav>
@@ -161,7 +173,11 @@
 
                     {% for post in posts %}
 
-                        <article class="post-card">
+                        <article
+                            class="post-card"
+                            data-post-card
+                            data-post-id="{{ post.id }}"
+                        >
 
                             {% if post.cover_image %}
 
@@ -201,11 +217,47 @@
                                     {{ post.created_at|date:"M d, Y H:i" }}
                                 </p>
 
+                                <!-- Bookmark -->
+                                <div class="post-actions">
+
+                                    <button
+                                        type="button"
+                                        class="bookmark-button"
+                                        data-bookmark-button
+                                        data-post-id="{{ post.id }}"
+                                        aria-pressed="false"
+                                    >
+                                        ☆ Bookmark
+                                    </button>
+
+                                </div>
+
                             </div>
 
                         </article>
 
                     {% endfor %}
+
+                </div>
+
+                <!-- Empty bookmarked view -->
+                <div
+                    id="no-bookmarked-posts"
+                    class="empty-state bookmark-empty-state"
+                    style="display: none;"
+                >
+
+                    <div class="empty-icon">
+                        ★
+                    </div>
+
+                    <h3>
+                        No bookmarked posts
+                    </h3>
+
+                    <p>
+                        Bookmark a project to see it here.
+                    </p>
 
                 </div>
 
@@ -262,6 +314,9 @@
         </section>
 
     </main>
+
+    <!-- Bookmark JavaScript -->
+    <script src="{% static 'blog/bookmarks.js' %}"></script>
 
 </body>
 </html>

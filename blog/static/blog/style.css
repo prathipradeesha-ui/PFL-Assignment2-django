@@ -998,3 +998,33 @@ body {
         height: 180px;
     }
 }
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bookmark-view-button {
+    border: 1px solid #d9b84c;
+    background: #fff8dc;
+    color: #6f5600;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.bookmark-button {
+    border: 1px solid #d1d5db;
+    background: #f3f4f6;
+    color: #374151;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.post-actions {
+    margin-top: 12px;
+}
