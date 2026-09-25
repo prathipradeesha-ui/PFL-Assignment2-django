@@ -1,105 +1,48 @@
-# ProjectHub - Django
+# ProjectHub – Django
 
-ProjectHub is a student project blog developed as part of the Programming Frameworks & Languages (PFL) Assessment 2.
+ProjectHub is a final-year project blog developed for Software Engineering students. Students can create, view, edit, delete, search, filter, sort, and bookmark project posts.
 
-The application provides a platform for Software Engineering students to share their final-year project ideas, experiences, and information.
+This Django application is one of three framework implementations developed for the Programming Frameworks & Languages assessment. The same ProjectHub case study is implemented across the selected frameworks, with Search used as the common additional feature.
 
-## Framework
+## Framework and Technologies
 
-- **Framework:** Django
-- **Language:** Python
-- **Database:** SQLite
-- **Frontend:** Django Templates, HTML, CSS
-- **Testing:** Django Automated Testing Framework
+- Django 6.1.1
+- Python 3.12.3
+- SQLite
+- Django Templates
+- Django Forms
+- CSS
+- JavaScript
+- Browser localStorage for bookmarks
+- Django automated testing framework
 
-## Features
+## Implemented Features
 
-The Django implementation includes the following features:
+### Core Blog Features
 
-- View the latest three blog posts
-- Create a new blog post
-- View individual blog posts
-- Edit existing blog posts
-- Delete blog posts
-- Search blog posts
-- Filter posts by category
-- Sort posts by:
-  - Newest
-  - Oldest
-  - Title A-Z
-- Add cover images using image URLs
-- Persistent data storage using SQLite
-- Responsive user interface
+- Homepage displaying the latest three projects
+- Create a new post
+- View individual post details
+- Edit an existing post
+- Delete an existing post
+- Persistent SQLite database
+- Post validation using Django Forms
+- Cover images using image URLs
+- Responsive web interface
 
-## Blog Post Fields
+### Additional Features
 
-Each blog post contains:
+- Search
+- Category filtering
+- Post sorting
+- Browser-based bookmarks using localStorage
+
+## Search
+
+Search allows users to find projects using keywords related to:
 
 - Title
 - Author
 - Category
 - Content
-- Cover Image URL
-- Created Date and Time
 
-## Search
-
-Search is implemented as the common additional feature for the ProjectHub implementations.
-
-Users can search across:
-
-- Post titles
-- Authors
-- Categories
-- Post content
-
-The search results are displayed on the homepage.
-
-## Category Filtering
-
-Users can select a category from the category dropdown to display posts belonging to that category.
-
-## Sorting
-
-Posts can be sorted using:
-
-- **Newest** - displays the most recently created posts first
-- **Oldest** - displays the oldest posts first
-- **Title A-Z** - sorts posts alphabetically by title
-
-## Cover Images
-
-Posts can include a cover image using a direct image URL.
-
-The cover image is displayed on the post card when a valid image URL is provided.
-
-## Project Structure
-
-```text
-PFL-Assignment2-django/
-│
-├── blog/
-│   ├── migrations/
-│   ├── static/
-│   │   └── blog/
-│   │       └── style.css
-│   ├── templates/
-│   │   └── blog/
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-│
-├── config/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
-│
-├── db.sqlite3
-├── manage.py
-├── requirements.txt
-└── README.md
