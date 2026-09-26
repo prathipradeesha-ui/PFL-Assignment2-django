@@ -10,21 +10,21 @@ class BlogTests(TestCase):
         Post.objects.create(
             title="Smart Campus Monitoring System",
             author="Praathi",
-            category="Internet of Things",
+            tag="Internet of Things",
             content="A smart campus monitoring project."
         )
 
         Post.objects.create(
             title="AI Student Assistant",
             author="Prathi",
-            category="Artificial Intelligence",
+            tag="Artificial Intelligence",
             content="An AI assistant for students."
         )
 
         Post.objects.create(
             title="Student Expense Tracker",
             author="Praathi",
-            category="Software Engineering",
+            tag="Software Engineering",
             content="A system for tracking student expenses."
         )
 
@@ -76,11 +76,11 @@ class BlogTests(TestCase):
             "Smart Campus Monitoring System"
         )
 
-    def test_category_filter_works(self):
+    def test_tag_filter_works(self):
         response = self.client.get(
             reverse("home"),
             {
-                "category": "Internet of Things"
+                "tag": "Internet of Things"
             }
         )
 
@@ -115,7 +115,7 @@ class BlogTests(TestCase):
             {
                 "title": "New Student Project",
                 "author": "Test Student",
-                "category": "Software Engineering",
+                "tag": "Software Engineering",
                 "content": "Test project content."
             }
         )
@@ -182,7 +182,7 @@ class BlogTests(TestCase):
             {
                 "title": "Updated Smart Campus System",
                 "author": "Praathi",
-                "category": "Internet of Things",
+                "tag": "Internet of Things",
                 "content": "Updated project content."
             }
         )

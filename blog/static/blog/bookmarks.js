@@ -25,8 +25,45 @@ function updateBookmarkButtons() {
     const headerButton = document.getElementById("bookmark-view-button");
 
     if (headerButton) {
-        headerButton.textContent =
-            `★ Bookmarks (${bookmarks.length})`;
+        const showingBookmarks =
+            headerButton.getAttribute("data-view") === "bookmarks";
+
+        headerButton.textContent = showingBookmarks
+            ? "← All Posts"
+            : `★ Bookmarks (${bookmarks.length})`;
+    }
+}
+
+function updateVisiblePosts() {
+    const headerButton = document.getElementById("bookmark-view-button");
+
+    if (!headerButton) {
+        return;
+    }
+
+    const showingBookmarks =
+        headerButton.getAttribute("data-view") === "bookmarks";
+
+    const bookmarks = getBookmarks();
+    const postCards = document.querySelectorAll("[data-post-card]");
+    const emptyMessage = document.getElementById("no-bookmarked-posts");
+
+    let visibleCount = 0;
+
+    postCards.forEach((card) => {
+        const postId = String(card.dataset.postId);
+        const shouldShow = !showingBookmarks || bookmarks.includes(postId);
+
+        card.style.display = shouldShow ? "" : "none";
+
+        if (shouldShow) {
+            visibleCount += 1;
+        }
+    });
+
+    if (emptyMessage) {
+        emptyMessage.style.display =
+            showingBookmarks && visibleCount === 0 ? "" : "none";
     }
 }
 
@@ -46,8 +83,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
             saveBookmarks(bookmarks);
             updateBookmarkButtons();
+            updateVisiblePosts();
         });
     });
+
+    const headerButton = document.getElementById("bookmark-view-button");
+
+    if (headerButton) {
+        headerButton.setAttribute("data-view", "all");
+
+        headerButton.addEventListener("click", () => {
+            const currentView = headerButton.getAttribute("data-view");
+
+            headerButton.setAttribute(
+                "data-view",
+                currentView === "bookmarks" ? "all" : "bookmarks"
+            );
+
+            updateBookmarkButtons();
+            updateVisiblePosts();
+        });
+    }
 
     updateBookmarkButtons();
 });

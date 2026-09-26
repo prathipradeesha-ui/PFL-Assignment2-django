@@ -12,14 +12,41 @@ html {
 
 body {
     margin: 0;
-
     font-family:
         Arial,
         Helvetica,
         sans-serif;
-
-    background: #f8fafc;
     color: #0f172a;
+
+    /*
+     * Soft indigo / violet / blue background.
+     * This matches the existing Django theme.
+     */
+    background-color: #f8fafc;
+    background-image:
+        radial-gradient(
+            circle at 90% 5%,
+            rgba(99, 102, 241, 0.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 8% 50%,
+            rgba(139, 92, 246, 0.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 90%,
+            rgba(59, 130, 246, 0.08),
+            transparent 27%
+        ),
+        linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f8fafc 42%,
+            #f5f3ff 72%,
+            #eff6ff 100%
+        );
+    background-attachment: fixed;
 }
 
 
@@ -29,11 +56,8 @@ body {
 
 .navbar {
     width: 100%;
-
     background: #0f172a;
-
     padding: 15px 0;
-
     box-shadow:
         0 4px 12px rgba(15, 23, 42, 0.15);
 }
@@ -41,9 +65,7 @@ body {
 .navbar-inner {
     width: 92%;
     max-width: 1150px;
-
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -55,13 +77,9 @@ body {
 .brand {
     display: flex;
     align-items: center;
-
     gap: 10px;
-
     color: white !important;
-
     text-decoration: none;
-
     font-size: 24px;
     font-weight: 700;
 }
@@ -69,22 +87,17 @@ body {
 .brand-icon {
     width: 40px;
     height: 40px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 11px;
-
     background:
         linear-gradient(
             135deg,
             #6366f1,
             #8b5cf6
         );
-
     font-size: 21px;
-
     box-shadow:
         0 4px 12px rgba(99, 102, 241, 0.3);
 }
@@ -94,23 +107,15 @@ body {
 
 .nav-create {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     padding: 10px 17px;
-
     border-radius: 9px;
-
     background: #4f46e5;
-
     color: white !important;
-
     text-decoration: none;
-
     font-size: 14px;
     font-weight: 700;
-
     transition:
         background 0.2s,
         transform 0.2s;
@@ -118,7 +123,6 @@ body {
 
 .nav-create:hover {
     background: #4338ca;
-
     transform: translateY(-1px);
 }
 
@@ -130,7 +134,6 @@ body {
 .container {
     width: 92%;
     max-width: 1150px;
-
     margin: 45px auto 70px;
 }
 
@@ -141,13 +144,9 @@ body {
 
 .hero {
     position: relative;
-
     overflow: hidden;
-
     padding: 65px 55px;
-
     border-radius: 22px;
-
     background:
         linear-gradient(
             135deg,
@@ -155,12 +154,9 @@ body {
             #6366f1 45%,
             #7c3aed 100%
         );
-
     color: white;
-
     box-shadow:
         0 15px 35px rgba(79, 70, 229, 0.22);
-
     margin-bottom: 48px;
 }
 
@@ -169,17 +165,12 @@ body {
 
 .hero::after {
     content: "";
-
     position: absolute;
-
     width: 260px;
     height: 260px;
-
     right: -80px;
     top: -100px;
-
     border-radius: 50%;
-
     background:
         rgba(255, 255, 255, 0.08);
 }
@@ -187,27 +178,19 @@ body {
 .hero h2 {
     position: relative;
     z-index: 1;
-
     margin: 0 0 14px;
-
     font-size: 42px;
     font-weight: 800;
-
     letter-spacing: -1px;
 }
 
 .hero p {
     position: relative;
     z-index: 1;
-
     max-width: 680px;
-
     margin: 0;
-
     color: #eef2ff;
-
     font-size: 17px;
-
     line-height: 1.7;
 }
 
@@ -222,31 +205,25 @@ body {
 
 .section-header {
     display: flex;
-
     align-items: flex-end;
     justify-content: space-between;
-
     margin-bottom: 22px;
 }
 
 .section-header h2 {
     margin: 0;
-
     font-size: 29px;
     font-weight: 800;
 }
 
 .section-header p {
     margin: 7px 0 0;
-
     color: #64748b;
-
     font-size: 14px;
 }
 
 .section-header > span {
     color: #64748b;
-
     font-size: 14px;
 }
 
@@ -261,30 +238,20 @@ body {
 
 .search-box form {
     display: flex;
-
     gap: 10px;
 }
 
 .search-box input,
 .search-box select {
     height: 48px;
-
     padding: 0 16px;
-
     border: 1px solid #cbd5e1;
-
     border-radius: 10px;
-
-    background: white;
-
+    background: rgba(255, 255, 255, 0.96);
     color: #0f172a;
-
     font-family: inherit;
-
     font-size: 14px;
-
     outline: none;
-
     transition:
         border-color 0.2s,
         box-shadow 0.2s;
@@ -296,37 +263,26 @@ body {
 
 .search-box select {
     min-width: 190px;
-
     cursor: pointer;
 }
 
 .search-box input:focus,
 .search-box select:focus {
     border-color: #6366f1;
-
     box-shadow:
         0 0 0 3px rgba(99, 102, 241, 0.12);
 }
 
 .search-box button {
     height: 48px;
-
     padding: 0 22px;
-
     border: none;
-
     border-radius: 10px;
-
     background: #4f46e5;
-
     color: white;
-
     font-family: inherit;
-
     font-size: 14px;
-
     font-weight: 700;
-
     cursor: pointer;
 }
 
@@ -341,10 +297,8 @@ body {
 
 .posts-grid {
     display: grid;
-
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
-
     gap: 24px;
 }
 
@@ -354,17 +308,12 @@ body {
    ========================================= */
 
 .post-card {
-    background: white;
-
+    background: rgba(255, 255, 255, 0.97);
     border: 1px solid #e2e8f0;
-
     border-radius: 17px;
-
     overflow: hidden;
-
     box-shadow:
         0 5px 18px rgba(15, 23, 42, 0.06);
-
     transition:
         transform 0.2s,
         box-shadow 0.2s;
@@ -375,15 +324,11 @@ body {
 
 .post-cover {
     display: block;
-
     width: 100%;
     height: 190px;
-
     object-fit: cover;
-
     border-bottom: 1px solid #e2e8f0;
 }
-
 
 .detail-cover {
     display: block;
@@ -397,7 +342,6 @@ body {
 
 .post-card:hover {
     transform: translateY(-5px);
-
     box-shadow:
         0 14px 28px rgba(15, 23, 42, 0.10);
 }
@@ -407,19 +351,14 @@ body {
 }
 
 
-/* Category */
+/* Tag */
 
-.category {
+.tag {
     display: inline-block;
-
     padding: 6px 11px;
-
     border-radius: 20px;
-
     background: #eef2ff;
-
     color: #4f46e5;
-
     font-size: 12px;
     font-weight: 700;
 }
@@ -429,17 +368,13 @@ body {
 
 .post-card h3 {
     margin: 17px 0 8px;
-
     color: #0f172a;
-
     font-size: 21px;
-
     line-height: 1.35;
 }
 
 .post-title-link {
     color: #0f172a;
-
     text-decoration: none;
 }
 
@@ -452,9 +387,7 @@ body {
 
 .post-author {
     margin: 0 0 17px;
-
     color: #64748b;
-
     font-size: 13px;
 }
 
@@ -463,19 +396,12 @@ body {
 
 .post-content {
     margin: 0;
-
     color: #475569;
-
     font-size: 14px;
-
     line-height: 1.65;
-
     display: -webkit-box;
-
     -webkit-line-clamp: 4;
-
     -webkit-box-orient: vertical;
-
     overflow: hidden;
 }
 
@@ -484,13 +410,9 @@ body {
 
 .post-date {
     margin: 20px 0 0;
-
     padding-top: 15px;
-
     border-top: 1px solid #e2e8f0;
-
     color: #94a3b8;
-
     font-size: 12px;
 }
 
@@ -501,52 +423,37 @@ body {
 
 .empty-state {
     padding: 55px 30px;
-
-    background: white;
-
+    background: rgba(255, 255, 255, 0.97);
     border: 1px solid #e2e8f0;
-
     border-radius: 17px;
-
     text-align: center;
-
     box-shadow:
         0 5px 18px rgba(15, 23, 42, 0.05);
 }
 
 .empty-icon {
     font-size: 42px;
-
     margin-bottom: 10px;
 }
 
 .empty-state h3 {
     margin: 0 0 8px;
-
     font-size: 22px;
 }
 
 .empty-state p {
     margin: 0 0 25px;
-
     color: #64748b;
 }
 
 .empty-button {
     display: inline-block;
-
     padding: 11px 19px;
-
     border-radius: 9px;
-
     background: #4f46e5;
-
     color: white;
-
     text-decoration: none;
-
     font-size: 14px;
-
     font-weight: 700;
 }
 
@@ -562,37 +469,28 @@ body {
 .form-container {
     width: 92%;
     max-width: 800px;
-
     margin: 50px auto 70px;
 }
 
 .form-card {
-    background: white;
-
+    background: rgba(255, 255, 255, 0.97);
     padding: 42px;
-
     border-radius: 18px;
-
     border: 1px solid #e2e8f0;
-
     box-shadow:
         0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 .form-card h2 {
     margin: 0 0 8px;
-
     font-size: 32px;
     font-weight: 800;
 }
 
 .form-description {
     margin: 0 0 30px;
-
     color: #64748b;
-
     font-size: 15px;
-
     line-height: 1.6;
 }
 
@@ -602,13 +500,9 @@ body {
 
 .form-group label {
     display: block;
-
     margin-bottom: 8px;
-
     color: #334155;
-
     font-size: 14px;
-
     font-weight: 700;
 }
 
@@ -616,23 +510,14 @@ body {
 .form-group textarea,
 .form-group select {
     width: 100%;
-
     padding: 13px 15px;
-
     border: 1px solid #cbd5e1;
-
     border-radius: 9px;
-
     background: white;
-
     color: #0f172a;
-
     font-family: inherit;
-
     font-size: 15px;
-
     outline: none;
-
     transition:
         border-color 0.2s,
         box-shadow 0.2s;
@@ -644,9 +529,7 @@ body {
 
 .form-group textarea {
     min-height: 190px;
-
     resize: vertical;
-
     line-height: 1.6;
 }
 
@@ -654,7 +537,6 @@ body {
 .form-group textarea:focus,
 .form-group select:focus {
     border-color: #6366f1;
-
     box-shadow:
         0 0 0 3px rgba(99, 102, 241, 0.12);
 }
@@ -664,32 +546,21 @@ body {
 
 .submit-button {
     width: 100%;
-
     padding: 14px 20px;
-
     margin-top: 5px;
-
     border: none;
-
     border-radius: 10px;
-
     background:
         linear-gradient(
             135deg,
             #4f46e5,
             #7c3aed
         );
-
     color: white;
-
     font-family: inherit;
-
     font-size: 16px;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         transform 0.2s,
         box-shadow 0.2s;
@@ -697,7 +568,6 @@ body {
 
 .submit-button:hover {
     transform: translateY(-1px);
-
     box-shadow:
         0 8px 18px rgba(79, 70, 229, 0.25);
 }
@@ -707,15 +577,10 @@ body {
 
 .back-link {
     display: inline-block;
-
     margin-top: 22px;
-
     color: #4f46e5;
-
     font-size: 14px;
-
     font-weight: 600;
-
     text-decoration: none;
 }
 
@@ -731,54 +596,38 @@ body {
 .detail-container {
     width: 92%;
     max-width: 850px;
-
     margin: 50px auto 70px;
 }
 
 .detail-card {
-    background: white;
-
+    background: rgba(255, 255, 255, 0.97);
     padding: 45px;
-
     border: 1px solid #e2e8f0;
-
     border-radius: 18px;
-
     box-shadow:
         0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 .detail-card h1 {
     margin: 20px 0 12px;
-
     color: #0f172a;
-
     font-size: 38px;
-
     line-height: 1.25;
 }
 
 .detail-meta {
     display: flex;
-
     gap: 18px;
-
     margin-bottom: 30px;
-
     color: #64748b;
-
     font-size: 14px;
 }
 
 .detail-content {
     padding-top: 25px;
-
     border-top: 1px solid #e2e8f0;
-
     color: #334155;
-
     font-size: 16px;
-
     line-height: 1.8;
 }
 
@@ -793,29 +642,19 @@ body {
 
 .detail-actions {
     display: flex;
-
     align-items: center;
-
     gap: 15px;
-
     margin-top: 30px;
 }
 
 .edit-button {
     display: inline-block;
-
     padding: 10px 18px;
-
     border-radius: 8px;
-
     background: #4f46e5;
-
     color: white;
-
     text-decoration: none;
-
     font-weight: 700;
-
     font-size: 14px;
 }
 
@@ -825,23 +664,14 @@ body {
 
 .delete-button {
     display: inline-block;
-
     padding: 10px 18px;
-
     border-radius: 8px;
-
     background: #dc2626;
-
     color: white;
-
     text-decoration: none;
-
     font-weight: 700;
-
     font-size: 14px;
-
     border: none;
-
     cursor: pointer;
 }
 
@@ -854,25 +684,19 @@ body {
 
 .delete-preview {
     margin: 25px 0;
-
     padding: 18px;
-
     border: 1px solid #fecaca;
-
     border-radius: 10px;
-
     background: #fef2f2;
 }
 
 .delete-preview strong {
     color: #991b1b;
-
     font-size: 18px;
 }
 
 .delete-preview p {
     margin-top: 8px;
-
     color: #64748b;
 }
 
@@ -910,25 +734,21 @@ body {
     .brand-icon {
         width: 36px;
         height: 36px;
-
         font-size: 18px;
     }
 
     .nav-create {
         padding: 8px 12px;
-
         font-size: 12px;
     }
 
     .container {
         width: 94%;
-
         margin-top: 30px;
     }
 
     .hero {
         padding: 38px 25px;
-
         border-radius: 17px;
     }
 
@@ -946,9 +766,7 @@ body {
 
     .section-header {
         align-items: flex-start;
-
         flex-direction: column;
-
         gap: 8px;
     }
 
@@ -972,7 +790,6 @@ body {
 
     .detail-container {
         width: 94%;
-
         margin-top: 30px;
     }
 
@@ -986,7 +803,6 @@ body {
 
     .detail-meta {
         flex-direction: column;
-
         gap: 6px;
     }
 
@@ -998,6 +814,11 @@ body {
         height: 180px;
     }
 }
+
+
+/* =========================================
+   Bookmark Controls
+   ========================================= */
 
 .nav-actions {
     display: flex;
@@ -1027,4 +848,20 @@ body {
 
 .post-actions {
     margin-top: 12px;
+}
+
+
+/* =========================================
+   Footer
+   ========================================= */
+
+.site-footer {
+    width: 92%;
+    max-width: 1150px;
+    margin: 0 auto 35px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
 }

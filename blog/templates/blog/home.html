@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +16,19 @@
 
     <!-- Navigation -->
     <nav class="navbar">
+
         <div class="navbar-inner">
 
             <a class="brand" href="{% url 'home' %}">
-                <span class="brand-icon">🚀</span>
-                <span>ProjectHub</span>
+
+                <span class="brand-icon">
+                    🚀
+                </span>
+
+                <span>
+                    ProjectHub
+                </span>
+
             </a>
 
             <div class="nav-actions">
@@ -32,13 +41,17 @@
                     ★ Bookmarks (0)
                 </button>
 
-                <a class="nav-create" href="{% url 'create_post' %}">
+                <a
+                    class="nav-create"
+                    href="{% url 'create_post' %}"
+                >
                     + Create Post
                 </a>
 
             </div>
 
         </div>
+
     </nav>
 
 
@@ -48,7 +61,9 @@
         <!-- Hero -->
         <section class="hero">
 
-            <h2>ProjectHub Blog</h2>
+            <h2>
+                ProjectHub Blog
+            </h2>
 
             <p>
                 Explore final-year projects, ideas, and experiences
@@ -58,41 +73,45 @@
         </section>
 
 
-        <!-- Latest Posts -->
+        <!-- Posts Section -->
         <section class="posts-section">
 
             <!-- Search and Filters -->
             <div class="search-box">
 
-                <form method="get" action="{% url 'home' %}">
+                <form
+                    method="get"
+                    action="{% url 'home' %}"
+                >
 
                     <input
                         type="text"
                         name="q"
                         value="{{ search_query }}"
-                        placeholder="Search projects, authors, categories..."
+                        placeholder="Search projects, authors, tags..."
                     >
 
-                    <select name="category">
+                    <select name="tag">
 
                         <option value="">
-                            All Categories
+                            All Tags
                         </option>
 
-                        {% for category in categories %}
+                        {% for tag in tags %}
 
                             <option
-                                value="{{ category }}"
-                                {% if selected_category == category %}
+                                value="{{ tag }}"
+                                {% if selected_tag == tag %}
                                     selected
                                 {% endif %}
                             >
-                                {{ category }}
+                                {{ tag }}
                             </option>
 
                         {% endfor %}
 
                     </select>
+
 
                     <select name="sort">
 
@@ -125,6 +144,7 @@
 
                     </select>
 
+
                     <button type="submit">
                         Search
                     </button>
@@ -141,15 +161,49 @@
 
                     {% if search_query %}
 
-                        <h2>Search Results</h2>
+                        <h2>
+                            Search Results
+                        </h2>
 
                         <p>
                             Results for "{{ search_query }}"
                         </p>
 
+                    {% elif selected_tag %}
+
+                        <h2>
+                            Tag Results
+                        </h2>
+
+                        <p>
+                            Projects tagged "{{ selected_tag }}"
+                        </p>
+
+                    {% elif selected_sort == "oldest" %}
+
+                        <h2>
+                            Oldest Posts
+                        </h2>
+
+                        <p>
+                            Showing projects from oldest to newest.
+                        </p>
+
+                    {% elif selected_sort == "title" %}
+
+                        <h2>
+                            Projects A-Z
+                        </h2>
+
+                        <p>
+                            Showing projects in alphabetical order.
+                        </p>
+
                     {% else %}
 
-                        <h2>Latest Posts</h2>
+                        <h2>
+                            Latest Posts
+                        </h2>
 
                         <p>
                             Discover the latest student projects.
@@ -159,8 +213,20 @@
 
                 </div>
 
+
                 <span>
-                    Latest 3 projects
+
+                    {% if show_latest_three %}
+
+                        Latest 3 projects
+
+                    {% else %}
+
+                        {{ posts|length }}
+                        project{{ posts|length|pluralize }}
+
+                    {% endif %}
+
                 </span>
 
             </div>
@@ -192,30 +258,42 @@
 
                             <div class="post-card-content">
 
-                                <span class="category">
-                                    {{ post.category }}
+                                <!-- Tag -->
+                                <span class="tag">
+                                    {{ post.tag }}
                                 </span>
 
+
+                                <!-- Title -->
                                 <h3>
+
                                     <a
                                         href="{% url 'post_detail' post.id %}"
                                         class="post-title-link"
                                     >
                                         {{ post.title }}
                                     </a>
+
                                 </h3>
 
+
+                                <!-- Author -->
                                 <p class="post-author">
                                     By {{ post.author }}
                                 </p>
 
+
+                                <!-- Content -->
                                 <p class="post-content">
                                     {{ post.content }}
                                 </p>
 
+
+                                <!-- Date -->
                                 <p class="post-date">
                                     {{ post.created_at|date:"M d, Y H:i" }}
                                 </p>
+
 
                                 <!-- Bookmark -->
                                 <div class="post-actions">
@@ -240,6 +318,7 @@
 
                 </div>
 
+
                 <!-- Empty bookmarked view -->
                 <div
                     id="no-bookmarked-posts"
@@ -261,6 +340,7 @@
 
                 </div>
 
+
             {% else %}
 
                 <!-- No Results -->
@@ -269,6 +349,7 @@
                     <div class="empty-icon">
                         🔍
                     </div>
+
 
                     {% if search_query %}
 
@@ -287,6 +368,25 @@
                         >
                             View All Posts
                         </a>
+
+
+                    {% elif selected_tag %}
+
+                        <h3>
+                            No posts found
+                        </h3>
+
+                        <p>
+                            No projects were found with the selected tag.
+                        </p>
+
+                        <a
+                            class="empty-button"
+                            href="{% url 'home' %}"
+                        >
+                            View All Posts
+                        </a>
+
 
                     {% else %}
 
@@ -315,8 +415,28 @@
 
     </main>
 
+
+    <!-- ProjectHub Footer -->
+    <footer
+        style="
+            width: 92%;
+            max-width: 1150px;
+            margin: 0 auto 35px;
+            padding: 20px 0;
+            border-top: 1px solid #cbd5e1;
+            text-align: center;
+            color: #4f46e5;
+            font-size: 13px;
+            font-weight: 600;
+        "
+    >
+        ProjectHub · A community space for discovering and sharing student projects
+    </footer>
+
+
     <!-- Bookmark JavaScript -->
     <script src="{% static 'blog/bookmarks.js' %}"></script>
 
 </body>
+
 </html>

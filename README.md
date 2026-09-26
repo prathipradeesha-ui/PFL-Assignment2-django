@@ -33,7 +33,7 @@ This Django application is one of three framework implementations developed for 
 ### Additional Features
 
 - Search
-- Category filtering
+- Tag filtering
 - Post sorting
 - Browser-based bookmarks using localStorage
 
@@ -43,6 +43,6 @@ Search allows users to find projects using keywords related to:
 
 - Title
 - Author
-- Category
+- Tag
 - Content
 

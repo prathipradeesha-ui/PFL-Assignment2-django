@@ -6,7 +6,7 @@ from .forms import PostForm
 
 def home(request):
     search_query = request.GET.get('q', '').strip()
-    selected_category = request.GET.get('category', '').strip()
+    selected_tag = request.GET.get('tag', '').strip()
     selected_sort = request.GET.get('sort', 'newest').strip()
 
     if selected_sort == 'oldest':
@@ -23,23 +23,30 @@ def home(request):
         posts = posts.filter(
             Q(title__icontains=search_query)
             | Q(author__icontains=search_query)
-            | Q(category__icontains=search_query)
+            | Q(tag__icontains=search_query)
             | Q(content__icontains=search_query)
         )
 
-    if selected_category:
+    if selected_tag:
         posts = posts.filter(
-            category=selected_category
+            tag=selected_tag
         )
 
-    categories = (
+    tags = (
         Post.objects
-        .values_list('category', flat=True)
+        .values_list('tag', flat=True)
         .distinct()
-        .order_by('category')
+        .order_by('tag')
     )
 
-    posts = posts[:3]
+    show_latest_three = (
+        not search_query
+        and not selected_tag
+        and selected_sort == 'newest'
+    )
+
+    if show_latest_three:
+        posts = posts[:3]
 
     return render(
         request,
@@ -47,9 +54,10 @@ def home(request):
         {
             "posts": posts,
             "search_query": search_query,
-            "selected_category": selected_category,
-            "categories": categories,
+            "selected_tag": selected_tag,
+            "tags": tags,
             "selected_sort": selected_sort,
+            "show_latest_three": show_latest_three,
         }
     )
 
@@ -118,4 +126,3 @@ def delete_post(request, post_id):
             "post": post,
         }
     )
-
